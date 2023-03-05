@@ -12,9 +12,10 @@ wss.on("connection", function connection(ws) {
   ws.on("message", function (message) {
     console.log("message received:", message.toString());
 
-    for (let client of clients) {
+    clients.forEach((client) => {
+      console.log(client);
       client.send(message);
-    }
+    });
   });
 
   ws.on("close", function () {
